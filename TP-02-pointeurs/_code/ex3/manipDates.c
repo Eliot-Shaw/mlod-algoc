@@ -5,6 +5,12 @@ int main(){
     initialiseDate(&d);
     afficheDate(&d);
     return 42;
+
+    Date *date;
+    date = newDate();
+    afficheDate(date);
+
+    free(date);
 }
 
 
@@ -39,3 +45,6 @@ Date creerDateParCopie(){
 }
 
 
+Date* newDate(){
+    return (Date*) malloc(sizeof(Date));
+}

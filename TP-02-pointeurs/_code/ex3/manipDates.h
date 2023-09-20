@@ -26,3 +26,4 @@ typedef struct DATE{
 void initialiseDate(Date* date);
 void afficheDate(Date* date);
 Date creerDateParCopie();
+int64_t newDate();
