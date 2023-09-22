@@ -42,6 +42,20 @@ void matrix_print(int64_t matriceResultat[][SIZE]){
 }
 
 
-Matrice* creer(int64_t valInit, int64_t nbLig, int64_t nbCol){
-    return (Matrice *) malloc(sizeof(Matrice));
+Matrice creer(int64_t valInit, int64_t nbLig, int64_t nbCol){
+    Matrice nouvelleMatrice;
+    nouvelleMatrice.nbCol = nbCol;
+    nouvelleMatrice.nbLig = nbLig;
+    nouvelleMatrice.mat = malloc(sizeof(int64_t)*nbCol*nbLig);
+
+    return nouvelleMatrice;
 }
+
+void matrix_destroy(struct Matrice* matADestroy){
+    free(matADestroy->mat);
+}
+
+int64_t* matrix_lig(Matrice matriceAObs,int64_t nbLig){
+    return (matriceAObs.mat + (nbLig * matriceAObs.nbCol));
+}
+
