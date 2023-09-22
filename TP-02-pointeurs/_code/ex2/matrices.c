@@ -62,12 +62,29 @@ Matrice matrix_creer(int64_t valInit, int64_t nbLig, int64_t nbCol){
     return nouvelleMatrice;
 }
 
+Matrice* matrix_creer_point(int64_t valInit, int64_t nbLig, int64_t nbCol){
+    Matrice* ptrMat = malloc(sizeof(Matrice));
+    ptrMat->nbCol = nbCol;
+    ptrMat->nbLig = nbLig;
+    ptrMat->mat = malloc(sizeof(int64_t)*nbCol*nbLig);
+
+    for (int r=0; r < ptrMat->nbLig; ++r){
+        int64_t* row = matrix_lig_point(ptrMat, r);
+        for (int c=0; c < ptrMat->nbCol; ++c)
+            row[c] = valInit;
+    }
+}
+
 void matrix_destroy(Matrice* matADestroy){
     free(matADestroy->mat);
 }
 
 int64_t* matrix_lig(Matrice matriceAObs, int64_t nbLig){
     return (matriceAObs.mat + (nbLig * matriceAObs.nbCol));
+}
+
+int64_t* matrix_lig_point(Matrice* ptrMat, int64_t nbLig){
+    return (ptrMat->mat + (nbLig * ptrMat->nbCol));
 }
 
 void matrix_print(Matrice matriceResultat){
