@@ -20,3 +20,7 @@ Matrice matrix_creer(int64_t valInit, int64_t nbLig, int64_t nbCol);
 void matrix_destroy(Matrice* matADestroy);
 int64_t* matrix_lig(Matrice matrice,int64_t nbLig);
 void matrix_print(Matrice matriceResultat);
+
+Matrice* matrix_creer_point(int64_t valInit, int64_t nbLig, int64_t nbCol);
+int64_t* matrix_lig_point(Matrice* ptrMat, int64_t nbLig);
+void matrix_initLig(int64_t valInit, int64_t numLig, Matrice matriceAObs);

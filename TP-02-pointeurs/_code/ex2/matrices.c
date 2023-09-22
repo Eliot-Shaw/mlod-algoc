@@ -10,6 +10,8 @@ int main(void) {
 
     Matrice mat33 = matrix_creer(8, 3, 2);
     matrix_print(mat33);
+    matrix_initLig(42, 2, mat33);
+    matrix_print(mat33);
 
 
     return EXIT_SUCCESS;
@@ -57,7 +59,7 @@ Matrice matrix_creer(int64_t valInit, int64_t nbLig, int64_t nbCol){
     for (int r=0; r < nouvelleMatrice.nbLig; ++r){
         int64_t* row = matrix_lig(nouvelleMatrice, r);
         for (int c=0; c < nouvelleMatrice.nbCol; ++c)
-            row[c] = valInit;
+            row[c] = c+r;
     }
     return nouvelleMatrice;
 }
@@ -99,3 +101,12 @@ void matrix_print(Matrice matriceResultat){
         printf("\n");
     }
 }
+
+
+
+void matrix_initLig(int64_t valInit, int64_t numLig, Matrice matriceAObs){
+    for (int r=0; r < matriceAObs.nbLig; ++r){
+        int64_t* row = matrix_lig(matriceAObs, numLig);
+        for (int c=0; c < matriceAObs.nbCol; ++c)
+            row[c] = valInit;
+    }}
