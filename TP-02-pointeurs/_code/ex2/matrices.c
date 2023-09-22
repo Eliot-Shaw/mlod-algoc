@@ -40,3 +40,8 @@ void matrix_print(int64_t matriceResultat[][SIZE]){
         printf("\n");
     }
 }
+
+
+Matrice* creer(int64_t valInit, int64_t nbLig, int64_t nbCol){
+    return (Matrice *) malloc(sizeof(Matrice));
+}
