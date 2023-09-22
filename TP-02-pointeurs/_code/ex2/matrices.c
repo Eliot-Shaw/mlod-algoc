@@ -62,7 +62,7 @@ Matrice matrix_creer(int64_t valInit, int64_t nbLig, int64_t nbCol){
     return nouvelleMatrice;
 }
 
-void matrix_destroy(struct Matrice* matADestroy){
+void matrix_destroy(Matrice* matADestroy){
     free(matADestroy->mat);
 }
 
