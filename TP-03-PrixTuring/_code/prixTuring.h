@@ -26,6 +26,11 @@ typedef struct LIGNE{
 } Ligne;
 
 
+int numberOfWinners(FILE* file_input);
+
+
+
+
 Ligne* ligne_creer(int valInit, int annee, char* gagnant, char* info);
 void ligne_destroy(Ligne* ligADestroy);
 void ligne_print(Ligne ligneResultat);
