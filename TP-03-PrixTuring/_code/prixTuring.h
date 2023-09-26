@@ -18,22 +18,28 @@ Exemple valeurs du csv
 #include <errno.h>
 #include <assert.h>
 
-typedef struct LIGNE{
+typedef struct {
     int annee;
     char* gagnant;
     char* info;
-    int* ptr;
-} Ligne;
+} Winner;
 
 
 int numberOfWinners(FILE* file_input);
 
+void aller_a_info(FILE* file_input, int numero_winner, int partie);
 
+int compter_taille(FILE* file_input, int numero_winner, int zone);
 
+void data_remplir(FILE* file_input, int numero_winner, int partie, char* data, int taille_data);
 
-Ligne* ligne_creer(int valInit, int annee, char* gagnant, char* info);
-void ligne_destroy(Ligne* ligADestroy);
-void ligne_print(Ligne ligneResultat);
+Winner* winner_creer(FILE* file_input, int numero_winner);
+void winner_remplir(Winner* ptr_winner, int annee, char* gagnant, char* info);
+void winner_destroy(Winner* winner_destroy);
 
-int** tab_lignes_creer(int nbLignes);
-void tab_lignes_destroy(int* nbLignes);
+Winner** tab_winners_creer(FILE* file_input);
+void tab_winners_remplir(FILE* file_input, Winner** tab_winners, int number_of_winners);
+void tab_winners_destroy(FILE* file_input, Winner** tab_winners);
+
+Winner** readWinners(FILE* file_input);
+void printWinners(FILE* file_input);
