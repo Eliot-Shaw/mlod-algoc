@@ -2,20 +2,22 @@
 
 int main(int argc, char** argv){
 	char filename[] = "../_data/turingWinners.csv";
-	// char outputFilename[] = "../_data/out.csv";
+	char outputFilename[] = "../_data/out.csv";
 
 	FILE* file_input;
-	// FILE* file_output;
+	FILE* file_output;
 
 	file_input = fopen(filename,"r");
+	file_output = fopen(outputFilename,"w");
 
 	Winner** coucou = readWinners(file_input);
 
-	//question4
+	printWinners(file_output, coucou);
 
 	tab_winners_destroy(file_input, coucou);
 
 	fclose(file_input);
+	fclose(file_output);
 
 	return EXIT_SUCCESS;
 }
@@ -24,7 +26,7 @@ int main(int argc, char** argv){
 int numberOfWinners(FILE* file_input){
 	rewind(file_input);
 	char tete_lecture = ' ';
-	int compteur=1; //on compte à partir de la winner 1
+	int compteur=0;
 	while(tete_lecture != EOF){
 		tete_lecture =  fgetc(file_input);
 		if (tete_lecture == '\n'){
@@ -69,7 +71,7 @@ int compter_taille(FILE* file_input, int numero_winner, int partie){
 		tete_lecture =  fgetc(file_input);
 		compteur++;
 	}
-	return compteur-1;
+	return compteur;
 }
 
 void data_remplir(FILE* file_input, int numero_winner, int partie, char* data, int taille_data){
@@ -135,8 +137,16 @@ void tab_winners_destroy(FILE* file_input, Winner** tab_winners){
 
 Winner** readWinners(FILE* file_input){
 	return tab_winners_creer(file_input);
+	//oui on rename pas les fonctions
 }
 
-void printWinners(FILE* file_input){
-	
+void printWinners(FILE* file_output, Winner** tab_winners){
+	for(int i=0; i<57; i++){
+		fprintf(
+			file_output, 
+			"%d;%s;%s\n", 
+			tab_winners[i]->annee,
+			tab_winners[i]->gagnant,
+			tab_winners[i]->info);
+	}
 }
