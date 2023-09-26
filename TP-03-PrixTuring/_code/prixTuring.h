@@ -26,7 +26,9 @@ typedef struct LIGNE{
 } Ligne;
 
 
-Ligne ligne_creer(int valInit, int annee, char* gagnant, char* info);
+Ligne* ligne_creer(int valInit, int annee, char* gagnant, char* info);
 void ligne_destroy(Ligne* ligADestroy);
 void ligne_print(Ligne ligneResultat);
-int* ligne_lig(Ligne ligne,int nbLig);
+
+int** tab_lignes_creer(int nbLignes);
+void tab_lignes_destroy(int* nbLignes);
