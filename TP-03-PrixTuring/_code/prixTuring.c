@@ -1,8 +1,8 @@
 #include "prixTuring.h"
 
 int main(int argc, char** argv){
-	char filename[] = "../_data/turingWinners.csv";
-	char outputFilename[] = "../_data/out.csv";
+	char* filename = argv[0]; //"../_data/turingWinners.csv";
+	char* outputFilename = argv[1]; //"../_data/out.csv";
 
 	FILE* file_input;
 	FILE* file_output;
