@@ -1,3 +1,12 @@
+/*
+Utiliser des noms de fichiers data custom
+	-o <file_input> <file_output>
+Afficher les details du gagnant d'une année
+	--info <annee>
+Trier les gagnants selon l'année d'apparition
+	--sort
+*/
+
 #include "prixTuring.h"
 
 int main(int argc, char** argv){
@@ -184,7 +193,6 @@ void sortTuringWinnersByYear(FILE* file_input, FILE* file_output, Winner** tab_w
     }
 	printWinners(file_input, file_output, tab_winners);
 }
-
 
 void infosAnnee(FILE* file_input, Winner** tab_winners, int arg_annee){
 	int winner_line = 0;
