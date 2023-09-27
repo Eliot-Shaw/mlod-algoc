@@ -165,6 +165,27 @@ void printWinners(FILE* file_input, FILE* file_output, Winner** tab_winners){
 	}
 }
 
+void sortTuringWinnersByYear(FILE* file_input, FILE* file_output, Winner** tab_winners){
+	// oui c'est un tri a bulles moche comme tout
+	int num_winners = numberOfWinners(file_input);
+	for (int i = 0; i < num_winners - 1; i++) {
+		int changement = 0;
+        for (int j = 0; j < num_winners - i - 1; j++) {
+            if (tab_winners[j]->annee > tab_winners[j + 1]->annee) {
+                Winner* temp = tab_winners[j];
+                tab_winners[j] = tab_winners[j + 1];
+                tab_winners[j + 1] = temp;
+				changement = 1;
+            }
+        }
+		if(changement ==0){
+			break;
+		}
+    }
+	printWinners(file_input, file_output, tab_winners);
+}
+
+
 void infosAnnee(FILE* file_input, Winner** tab_winners, int arg_annee){
 	int winner_line = 0;
 	
@@ -180,15 +201,3 @@ void infosAnnee(FILE* file_input, Winner** tab_winners, int arg_annee){
 	}
 }
 
-void sortTuringWinnersByYear(FILE* file_input, FILE* file_output, Winner** tab_winners){
-	
-	
-	for(int i=0; i<numberOfWinners(file_input); i++){
-		fprintf(
-			file_output, 
-			"%d;%s;%s\n", 
-			tab_winners[i]->annee,
-			tab_winners[i]->gagnant,
-			tab_winners[i]->info);
-	}
-}
