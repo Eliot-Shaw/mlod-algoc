@@ -42,4 +42,8 @@ void tab_winners_remplir(FILE* file_input, Winner** tab_winners, int number_of_w
 void tab_winners_destroy(FILE* file_input, Winner** tab_winners);
 
 Winner** readWinners(FILE* file_input);
-void printWinners(FILE* file_output, Winner** tab_winners);
+
+void printWinners(FILE* file_input, FILE* file_output, Winner** tab_winners);
+void sortTuringWinnersByYear(FILE* file_input, FILE* file_output, Winner** tab_winners);
+
+void infosAnnee(FILE* file_input, Winner** tab_winners, int arg_annee);
