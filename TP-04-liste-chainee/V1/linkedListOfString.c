@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 int main(void){
-	Liste l, p;
+	char* l, p;
 
 	l = NULL;
 	printf("estVide(l) = %s\n",estVide(l)?"TRUE":"FALSE");
