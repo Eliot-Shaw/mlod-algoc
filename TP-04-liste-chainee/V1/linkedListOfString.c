@@ -2,11 +2,12 @@
 // gcc -W -Wall -Wno-unused-parameter -std=c99 liste-chainee.c liste-chainee-main.c -o liste-chaine-main
 
 #include "liste-chainee.h"
+#include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
+
 
 int main(void){
-	char* l, p;
+	Liste l, p;
 
 	l = NULL;
 	printf("estVide(l) = %s\n",estVide(l)?"TRUE":"FALSE");
@@ -39,7 +40,7 @@ int main(void){
 		printf("cherche_i(99) : [ERREUR] pas trouve \n");
 	else {
 		printf("cherche_i(99) : trouve, good ");
-		afficheElement(p->val);
+		afficheElement(p);
 		printf("\n");
 	}
 
@@ -51,7 +52,7 @@ int main(void){
 		printf("cherche_r(99) : [ERREUR] pas trouve \n");
 	else {
 		printf("cherche_r(99) : trouve, good ");
-		afficheElement(p->val);
+		afficheElement(p);
 		printf("\n");
 	}
 
@@ -85,5 +86,17 @@ int main(void){
 
 	detruire_r(l);
 
-	return EXIT_SUCCESS;
+	return EXIT_SUCCESS; 
+}
+
+void afficheElement(Element e){
+
+}
+
+void detruireElement(Element e){
+
+}
+
+bool equalsElement(Element e1, Element e2){
+	return (strcmp(e1, e2)==NULL);
 }
