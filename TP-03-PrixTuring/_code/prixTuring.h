@@ -29,7 +29,7 @@ int numberOfWinners(FILE* file_input);
 
 void aller_a_info(FILE* file_input, int numero_winner, int partie);
 
-int compter_taille(FILE* file_input, int numero_winner, int zone);
+int compter_taille(FILE* file_input, int numero_winner, int partie);
 
 void data_remplir(FILE* file_input, int numero_winner, int partie, char* data, int taille_data);
 
