@@ -1,4 +1,4 @@
-#include "liste-chainee.h"
+#include "linkedList.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -69,8 +69,6 @@ void detruire_i(Liste l) {
 void detruire_r(Liste l) {
 	if(l == NULL){
 		printf("\nFully destroyed recursively, mummy vibes\n");
-		detruireElement(l->val);
-		free(l);
 		return;
 	}
 	detruire_r(l->suiv);
