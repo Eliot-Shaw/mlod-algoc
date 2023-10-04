@@ -8,11 +8,14 @@ int main(void){
 	ArbreBinaire a; //,p;
 
 	initialiser(&a);
+
 	// a = NULL;
 	printf("estVide(a)= %s\n",estVide(a)?"TRUE":"FALSE");
+	
 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
 
-	a = insere_r(a,5);
+	a = insere_i(a,5);
+	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
 	afficheGRD_r(a);printf("\n");
 	a = insere_r(a,3);
 	afficheGRD_r(a);printf("\n");

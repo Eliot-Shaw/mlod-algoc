@@ -4,12 +4,12 @@
 
 // retourne TRUE si a est l'arbre vide et FALSE sinon
 bool estVide(ArbreBinaire a) {
-	return true;
+	return a==NULL;
 }
 
 // initialise l'arbre a à l'arbre vide
 void initialiser(ArbreBinaire* a) {
-	a = NULL;
+	*a = NULL;
 }
 
 // créer un arbre contenant un seul noeud ayant la valeur e
@@ -25,6 +25,9 @@ ArbreBinaire creer(Element e) {
 // si a contient déjà un element e, ce dernier n'est pas insérer afin d'éviter les doublons
 // version itérative
 ArbreBinaire insere_i(ArbreBinaire a, Element e) {
+	if(a == NULL){
+		return creer(e); //arbre vide->creer nouvel arbre
+	}
 	ArbreBinaire currentNode = a;
 	while(currentNode!=NULL){
 		if(currentNode->val<e){
@@ -34,8 +37,8 @@ ArbreBinaire insere_i(ArbreBinaire a, Element e) {
 			if(currentNode->filsDroit==NULL){currentNode->filsDroit = creer(e);return a;}
 			currentNode=currentNode->filsGauche;
 		}
-		return a;
-	}	
+	}
+	return a;
 }
 
 // insere e dans a sachant que a est un arbre binaire de recherche
@@ -100,7 +103,7 @@ ArbreBinaire pere(ArbreBinaire a, Element e){
 		if(a->filsGauche->val==e){return a;}
 		return pere(a->filsGauche,e);
 	}else if(a->val < e){
-		if(a->filsDroit==e){return a;}
+		if(a->filsDroit->val==e){return a;}
 		return pere(a->filsDroit,e);
 	}
 	return NULL;
@@ -123,20 +126,20 @@ void afficheGRD_r(ArbreBinaire a){
 	if(a==NULL){
 		return;
 	}
-	afficheRGD_r(a->filsGauche);
+	afficheGRD_r(a->filsGauche);
 	for(int i=1;i<hauteur(a);i++){
 		printf("\t");
 	}
 	printf("%d\n",a->val);
-	afficheRGD_r(a->filsDroit);
+	afficheGRD_r(a->filsDroit);
 }
 
 void afficheGDR_r(ArbreBinaire a){
 	if(a==NULL){
 		return;
 	}
-	afficheRGD_r(a->filsGauche);
-	afficheRGD_r(a->filsDroit);
+	afficheGDR_r(a->filsGauche);
+	afficheGDR_r(a->filsDroit);
 	for(int i=1;i<hauteur(a);i++){
 		printf("\t");
 	}
@@ -204,6 +207,5 @@ ArbreBinaire supprimer_r(ArbreBinaire a,Element e){
 }
 
 void detruire_r(ArbreBinaire a){
-
 }
 
