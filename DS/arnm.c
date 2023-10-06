@@ -71,12 +71,14 @@ Difference* computeDifferenceBetween(const char* nucleotides_original,const char
 		}
 	}
 
-	Difference* differences = calloc(sizeof(Difference), number_difference);
+	printf("\nIl existe %d differences entre les codes fournis", number_difference);
+	// on ajoute une derniere case dans le tableau avec une différence de 0 pour annoncer la fin du tableau
+	Difference* differences = calloc(sizeof(Difference), number_difference+1); 
 	int index_actuel_differences=0;
 	for(int i=0; i<nucleotides_length; i++){
 		if(is_difference[i] == 1){
 			differences[index_actuel_differences].index = i;
-			differences[index_actuel_differences].distance = abs(distanceBetweenNucleotides(nucleotides_original[i], nucleotides_replique[i]));
+			differences[index_actuel_differences].distance = distanceBetweenNucleotides(nucleotides_original[i], nucleotides_replique[i]);
 			index_actuel_differences++;
 		}
 	}
@@ -88,9 +90,15 @@ void printDifferences(Difference* differences){
 	printf("\nComputed differences between two sequences :\n");
 
 	int index_differences_courant = 0;
-	while(differences[index_differences_courant].index < differences[index_differences_courant+1].index){ //je vais lire dans la memoire suivante alors que je sais pas si j'ai le droit, pasbo
-		printf("<%d,%d>\t",differences[index_differences_courant].index, differences[index_differences_courant].distance);
+	int index_retour_ligne = 0;
+	while(differences[index_differences_courant].distance != 0){
+		printf("<%d,%d>\t\t",differences[index_differences_courant].index, differences[index_differences_courant].distance);
 		index_differences_courant++;
+		index_retour_ligne++;
+		if(index_retour_ligne>5){
+			printf("\n");
+			index_retour_ligne=0;
+		}
 	}
 	printf("\n");
 }
@@ -107,11 +115,14 @@ int main(void){
 
 	int* stat_ATCG= calloc(sizeof(int), 4);
 	stat_ATCG = statistics(sequenceDeNucleotides);
-	printf("Statistiques des nucleotides dans la sequence : %d,%d,%d,%d\n", stat_ATCG[0], stat_ATCG[1], stat_ATCG[2], stat_ATCG[3]);
+	printf("Statistiques des nucleotides dans la sequence : A:%d%%\tT:%d%%\tC:%d%%\tG:%d%%\n", stat_ATCG[0], stat_ATCG[1], stat_ATCG[2], stat_ATCG[3]);
 
+	// Difference* differences = computeDifferenceBetween("AGTC","ATGC");
 	Difference* differences = computeDifferenceBetween(code_proteine_spike_pfizer, code_proteine_spike_moderna);
 
 	printDifferences(differences);
+
+	// On pourrait ajouter une fonction affichant différents tronçons communs entre deux chaines ARN
 
 	return EXIT_SUCCESS;
 }
