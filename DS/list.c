@@ -57,6 +57,7 @@ data_t list_rmlast(List *list) {
     return doomed_node->data;
 }
 
+// affiche dans la console les différents éléments de la chaine
 void list_print(List *list){
     if(list->first == NULL){ 
         printf("-- Fin de liste !\n");
