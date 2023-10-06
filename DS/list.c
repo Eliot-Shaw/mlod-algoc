@@ -66,6 +66,7 @@ void list_print(List *list){
     List *smaller_list = malloc(sizeof(List));
     smaller_list->first = list->first->next;
     list_print(smaller_list);
+    free(smaller_list);
 }
 
 int main(void) {
