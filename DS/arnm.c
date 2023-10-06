@@ -91,10 +91,9 @@ void printDifferences(Difference* differences){
 
 	int index_differences_courant = 0;
 	while(differences[index_differences_courant].distance != 0){
-		printf("<%d,%d>\t\t",differences[index_differences_courant].index, differences[index_differences_courant].distance);
+		printf("<%d,%d>\n",differences[index_differences_courant].index, differences[index_differences_courant].distance);
 		index_differences_courant++;
 	}
-	printf("\n");
 }
 
 // ========
