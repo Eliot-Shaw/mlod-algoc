@@ -90,15 +90,9 @@ void printDifferences(Difference* differences){
 	printf("\nComputed differences between two sequences :\n");
 
 	int index_differences_courant = 0;
-	int index_retour_ligne = 0;
 	while(differences[index_differences_courant].distance != 0){
 		printf("<%d,%d>\t\t",differences[index_differences_courant].index, differences[index_differences_courant].distance);
 		index_differences_courant++;
-		index_retour_ligne++;
-		if(index_retour_ligne>5){
-			printf("\n");
-			index_retour_ligne=0;
-		}
 	}
 	printf("\n");
 }
